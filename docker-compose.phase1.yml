@@ -1,0 +1,9 @@
+services:
+  webapp:
+    build: .
+    container_name: purple-webapp
+    ports:
+      - "8000:5000"
+    volumes:
+      - ./app/logs:/app/logs
+      - ./app/uploads:/app/uploads

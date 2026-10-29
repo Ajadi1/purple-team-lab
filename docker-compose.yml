@@ -1,0 +1,23 @@
+services:
+  webapp:
+    build: .
+    container_name: purple-webapp
+    expose:
+      - "5000"
+    volumes:
+      - ./app/logs:/app/logs
+      - ./app/uploads:/app/uploads
+
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    container_name: purple-waf
+    ports:
+      - "8000:8080"
+    environment:
+      - BACKEND=http://webapp:5000
+      - MODSEC_RULE_ENGINE=On
+      - BLOCKING_PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+    depends_on:
+      - webapp

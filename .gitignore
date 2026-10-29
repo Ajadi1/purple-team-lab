@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# Runtime data / generated at build or run time (keep attack evidence out of the repo)
+app/users.db
+app/logs/blocklist.txt
+app/logs/app.log
+app/uploads/*
+!app/uploads/.gitkeep
+
+# macOS
+.DS_Store
